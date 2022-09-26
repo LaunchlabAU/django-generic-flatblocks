@@ -10,9 +10,7 @@ application ``myproject``::
 
     from django.db import models
     from django.contrib import admin
-    from django.utils.encoding import python_2_unicode_compatible
 
-    @python_2_unicode_compatible
     class Entry(models.Model):
         title = models.CharField(max_length=255, blank=True)
         content = models.TextField(blank=True)

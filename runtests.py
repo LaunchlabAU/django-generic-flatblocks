@@ -11,7 +11,8 @@ def runtests(*test_args):
     # Setup settings
     if not settings.configured:
         from django_generic_flatblocks.tests.testapp import settings as TEST_SETTINGS
-        settings.configure(**TEST_SETTINGS.__dict__)
+        configure_args = dict((k,v) for k,v in TEST_SETTINGS.__dict__.items() if k.isupper())
+        settings.configure(**configure_args)
     setup()
     test_runner = DiscoverRunner(verbosity=1)
     failures = test_runner.run_tests(['django_generic_flatblocks'])
